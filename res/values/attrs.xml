@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="Tooltip">
+	    <attr name="android:layout_gravity" />
+	    <attr name="layout_position">
+	        <enum name="middle" value="0" />
+	        <enum name="left" value="1" />
+	        <enum name="right" value="2" />
+	    </attr>
+ 	    <attr name="contour" 	format="reference"/>
+	    <attr name="arrow_down"	format="reference"/>
+	    <attr name="arrow_up" 	format="reference"/>
+	    <attr name="android:orientation"/>
+	</declare-styleable>
+
+    <declare-styleable 	name="XYPlot">
+        <!-- Range Label attributes  -->
+        <attr name="labelRangeTextAlign" format="enum">
+			<enum name="center" value="1"/>
+			<enum name="left" value="2"/>
+			<enum name="right" value="3"/>
+		</attr>            
+        <attr name="labelRangeBackgroundColor" format="reference|color"/>        
+        <attr name="labelRangeColor" format="reference|color"/>
+        <attr name="labelRangeBorderColor" format="reference|color"/>
+        <attr name="labelRangeHeight" format="dimension"/>
+        <attr name="labelRangeSize" format="dimension"/>
+        <attr name="labelRangeWidth" format="dimension"/>
+        
+        <!-- Domain Label attributes  -->
+        <attr name="labelDomainTextAlign" format="enum">
+			<enum name="center" value="1"/>
+			<enum name="left" value="2"/>
+			<enum name="right" value="3"/>
+		</attr>            
+        <attr name="labelDomainBackgroundColor" format="reference|color"/>        
+        <attr name="labelDomainColor" format="reference|color"/>
+        <attr name="labelDomainBorderColor" format="reference|color"/>
+        <attr name="labelDomainHeight" format="dimension"/>
+        <attr name="labelDomainSize" format="dimension"/>
+        <attr name="labelDomainWidth" format="dimension"/>
+        
+        <!-- Grid attributes  -->
+        <attr name="lineRangeColor" format="reference|color"/>
+        <attr name="lineDomainColor" format="reference|color"/>
+        <attr name="gridBackgroundColor" format="reference|color"/>
+        
+        
+        <!-- Plot attributes  -->
+        <attr name="backgroundColor" format="reference|color"/>
+    
+        
+        <!-- XYLine attributes  -->
+        <attr name="pointBorderWidth" format="float"/>
+        <attr name="pointBorderColor" format="reference|color"/>
+        <attr name="pointRadio" format="float"/>
+        <attr name="pointWidth" format="float"/>
+        <attr name="pointColor" format="reference|color"/>
+        <attr name="lineWidth" format="float"/>
+        <attr name="lineColor" format="reference|color"/>
+        <attr name="lineFillEnabled" format="boolean" />
+        <attr name="lineFillColor" format="reference|color"/>
+        
+        
+    </declare-styleable>
+    
+    
+    
+</resources>

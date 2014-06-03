@@ -1,0 +1,143 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ar.com.bbva.xygrafico.widget.Tooltip 
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res/ar.com.bbva.xygrafico.widget"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:contour="@drawable/popup"
+        custom:arrow_up="@drawable/arrow_up"
+        custom:arrow_down="@drawable/arrow_down">
+        
+		<LinearLayout
+	    	android:id="@+id/tracks"
+	    	android:orientation="vertical"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1">
+		
+			<TextView 
+				android:id="@+id/txt_mount"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent" 
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				android:paddingRight="10dip"
+				android:text="$ 12000"
+				android:textColor="#0f0"/>
+			      
+			<TextView 
+				android:id="@+id/txt_date"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent" 
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				android:paddingRight="10dip"
+				android:text="18/02/14"
+				android:textColor="#000"/>
+		
+		</LinearLayout>
+	</ar.com.bbva.xygrafico.widget.Tooltip>
+	
+	<LinearLayout 
+		android:id="@+id/scroller2"
+		android:orientation="vertical"
+		android:layout_marginTop="16dip"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:fadingEdgeLength="5dip"
+    	android:scrollbars="none">
+   
+	     <ImageView
+	        android:id="@+id/arrow_up2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	    	android:layout_below="@id/scroller2"
+	        android:src="@drawable/arrow_up" />
+         
+    	<LinearLayout
+	    	android:id="@+id/tracks2"
+	    	android:orientation="vertical"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/popup"
+	        android:layout_weight="1"
+	        android:padding="10dip">
+	        
+	        <TextView 
+				android:id="@+id/txt_mount2"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent" 
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				android:paddingRight="10dip"
+				android:text="$ 12.457,45"
+				android:textColor="#01a"/>
+	        
+			<TextView 
+				android:id="@+id/txt_date2"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent" 
+				android:gravity="center_vertical"
+				android:paddingLeft="5dip"
+				android:paddingRight="10dip"
+				android:text="18/04/14"
+				android:textColor="#000"/>
+	        </LinearLayout>
+
+	 	<ImageView
+	        android:id="@+id/arrow_down2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	    	android:layout_below="@id/scroller2"
+	      	android:layout_marginTop="-4dip"
+	        android:src="@drawable/arrow_down" />
+	 	
+	</LinearLayout >
+	
+     <ar.com.bbva.xygrafico.XYPlot 
+        android:id="@+id/xygraph"
+    	android:layout_width="fill_parent"
+    	android:layout_height="200dp"
+    	android:layout_marginTop="10dp"
+    	android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+    	custom:labelRangeColor="#FFFFFF"
+    	custom:labelRangeHeight="20dp"
+    	custom:labelRangeWidth="40dp"
+    	custom:labelRangeBackgroundColor="#6d6e71"
+    	custom:labelRangeTextAlign="right"
+    	custom:labelRangeSize="10sp"
+    	
+    	custom:labelDomainColor="#6c6d71"
+    	custom:labelDomainHeight="20dp"
+    	custom:labelDomainWidth="35dp"
+    	custom:labelDomainBackgroundColor="#ffffff"
+    	custom:labelDomainBorderColor="#cccccc"
+    	custom:labelDomainTextAlign="center"
+    	custom:labelDomainSize="9sp"
+    	
+    	custom:lineRangeColor="#d9dbdc"
+    	custom:lineDomainColor="#d9dbdc"
+    	custom:gridBackgroundColor="#f2f2f2"
+    	custom:backgroundColor="#f2f2f2"
+    	
+    	custom:pointBorderWidth="2"
+    	custom:pointBorderColor="#029fe5"
+    	custom:pointRadio="7"
+    	custom:pointWidth="2"
+    	custom:pointColor="#ffffff"
+    	custom:lineWidth="3"
+    	custom:lineColor="#029fe5"
+    	custom:lineFillEnabled="true"
+    	
+    	/> 
+        
+
+</LinearLayout>
