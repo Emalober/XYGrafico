@@ -3,12 +3,9 @@ package ar.com.bbva.xygrafico.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.NinePatchDrawable;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import ar.com.bbva.xygrafico.activity.R;
@@ -66,13 +63,24 @@ public class Tooltip extends LinearLayout {
     {
     	super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     	
-        int maxHeight = this.getMeasuredHeight();
-        int maxWidth = this.getMeasuredWidth();
+        int maxHeight = 0;	//this.getMeasuredHeight();
+        int maxWidth = 0;	//this.getMeasuredWidth();
 
-        contour.setBounds(new Rect(0, 0, maxWidth,maxHeight));
+    	for(int i = 0; i < this.getChildCount(); i++) {
+    		View child = this.getChildAt(i);
+    		
+    		int widthChild = child.getMeasuredWidth();
+    		int heightChild = child.getMeasuredHeight();
+    		
+    		maxWidth = Math.max(maxWidth, widthChild);
+    		
+    		maxHeight += heightChild;
+    	}
+
         maxWidth += mTmpContainerRect.right + mTmpContainerRect.left;
         maxHeight += mTmpContainerRect.top + mTmpContainerRect.bottom;
-        maxHeight += arrowUp.getMinimumHeight();
+
+        maxHeight += arrowUp.getIntrinsicHeight();
 
 	    setMeasuredDimension(maxWidth, maxHeight);
 	}
@@ -81,25 +89,28 @@ public class Tooltip extends LinearLayout {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
 
         final int count = getChildCount();
-
-        arrowUp.setBounds(left + this.mTmpContainerRect.left, 
-        		top, 
-        		left + arrowUp.getIntrinsicWidth() + this.mTmpContainerRect.left, 
-        		top + arrowUp.getIntrinsicHeight());
         
-        top += arrowUp.getIntrinsicHeight() - 1;
+        int height = bottom - top;
+        int width = right - left;
+        
+        arrowUp.setBounds(this.mTmpContainerRect.left, 
+        		0, 
+        		arrowUp.getIntrinsicWidth() + this.mTmpContainerRect.left, 
+        		arrowUp.getIntrinsicHeight());
+    
+        contour.setBounds(0, arrowUp.getIntrinsicHeight() - arrowUp.getIntrinsicHeight()/3, 
+        		width, 
+        		height);
         
         // These are the far left and right edges in which we are performing layout.
         int leftPos = left + this.mTmpContainerRect.left;
         int rightPos = right - left - this.mTmpContainerRect.right;
 
         // These are the top and bottom edges in which we are performing layout.
-        int parentTop = getPaddingTop() + top + this.mTmpContainerRect.top;
-        int parentBottom = bottom - top - this.mTmpContainerRect.bottom;
+        int parentTop = getPaddingTop() + arrowUp.getIntrinsicHeight() + this.mTmpContainerRect.top;
+        int parentBottom = bottom - this.mTmpContainerRect.bottom;
         
         int useHeight = 0;
-        
-        contour.setBounds(left, top, right, bottom);
         
         for (int i = 0; i < count; i++) {
         	
@@ -108,13 +119,13 @@ public class Tooltip extends LinearLayout {
             if (child.getVisibility() != GONE) {
 
                 //int width = child.getMeasuredWidth();
-                int height = child.getMeasuredHeight();
+                int heightC = child.getMeasuredHeight();
 
                 // Place the child.
                 child.layout(leftPos, parentTop + useHeight,
-                		rightPos, parentTop + useHeight + height);
+                		rightPos, parentTop + useHeight + heightC);
                 
-                useHeight += height;
+                useHeight += heightC;
             }
         }
     }
@@ -126,19 +137,4 @@ public class Tooltip extends LinearLayout {
     	super.dispatchDraw(canvas);
     	arrowUp.draw(canvas);
     }
-/*    @Override
-    protected void onDraw(Canvas canvas) {
-    	// TODO Auto-generated method stub
-
-    	super.onDraw(canvas);
-    }
-    
-    @Override
-	public void draw(Canvas canvas) {
-        super.draw(canvas);
-
-        Paint paint = new Paint();
-        paint.setColor(0xFFFF0000);
-        canvas.drawLine(0, 0, getWidth(), getHeight(), paint);
-    }*/
 }
