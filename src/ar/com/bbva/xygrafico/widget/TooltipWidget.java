@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
+import android.graphics.drawable.Drawable;
 
 public class TooltipWidget {
 
@@ -21,21 +22,34 @@ public class TooltipWidget {
 	private float paddingLeft;
 	private float paddingBottom;
 	
+	private Drawable background;
+	
 	private float width;
 	private float height;
 	
-	private Rect rectBackground;
+	private Rect rectBackgroundPadding;
 	private RectF rectFBackground;
 	
 	
-	public TooltipWidget() {
+	public TooltipWidget(Drawable background) {
 		init();
+		this.background = background;
 	}
 	
-	public TooltipWidget(String text1, String text2) {
+	public TooltipWidget(String text1, String text2, Drawable background) {
 		init();
+		this.background = background;
 		this.primaryText = text1;
 		this.secondaryText = text2;
+		
+		Rect bounds1 = new Rect();
+		labelPaint.getTextBounds(text1, 0, text1.length(), bounds1);
+		
+		Rect bounds2 = new Rect();
+		labelPaint.getTextBounds(text2, 0, text2.length(), bounds2);
+		
+		width = Math.max(bounds1.right - bounds1.left, bounds2.right - bounds2.left);
+		height = bounds1.bottom - bounds1.top + bounds2.bottom - bounds2.top;
 	}
 	
 	public void init() {
@@ -51,8 +65,8 @@ public class TooltipWidget {
 		borderPaint.setStyle(Paint.Style.STROKE);
 		borderPaint.setColor(Color.TRANSPARENT);
 		
-		rectBackground = new Rect();
-		rectFBackground = new RectF(rectBackground);
+		rectBackgroundPadding = new Rect();
+		rectFBackground = new RectF(rectBackgroundPadding);
 		paddingTop = 10;
 		paddingRight = 10;
 		paddingLeft = 10;
@@ -69,23 +83,31 @@ public class TooltipWidget {
 	 */
 	public void draw(Canvas canvas, float x, float y, int offsetRadius) {
 		
-		float pixY =  y - this.getHeight() - offsetRadius;
+		float pixY =  y - this.getHeight() - offsetRadius - rectBackgroundPadding.bottom;
 		float pixX =  x;
 		
-		if(pixX > canvas.getWidth()/2)
-			pixX -= this.getWidth();
-		if(pixY <= 0)
-			pixY += this.getHeight() + 2*offsetRadius;
+//		if(pixX > canvas.getWidth()/2)
+//			pixX -= this.getWidth();
+//		if(pixY <= 0)
+//			pixY += this.getHeight() + 2*offsetRadius;
 		
-		float label1pixY =  pixY + this.paddingTop;
-		float label1pixX =  pixX + this.paddingLeft;
+		float label1pixY =  pixY;
+		float label1pixX =  pixX - this.getWidth() /2;
 			
-		RectF rectF = new RectF(pixX, pixY , pixX + this.getWidth(), pixY + this.getHeight());
+//		RectF rectF = new RectF(pixX - this.getWidth() /2, pixY , pixX + this.getWidth() /2, pixY + this.getHeight());
+		background.getPadding(rectBackgroundPadding);
+		
+		background.setBounds((int)(pixX - this.getWidth() /2) - rectBackgroundPadding.left, 
+				(int)pixY - rectBackgroundPadding.top,
+				(int)(pixX + this.getWidth()/2) + rectBackgroundPadding.right, 
+				(int)(pixY + this.getHeight()) + rectBackgroundPadding.bottom);
 
-		canvas.drawRoundRect(rectF, 5, 5, labelPaintBackground);
+		background.draw(canvas);
+		//canvas.drawRoundRect(rectF, 5, 5, labelPaintBackground);
 		canvas.drawText(this.primaryText, label1pixX, label1pixY, labelPaint);
-		canvas.drawText(this.primaryText, label1pixX, label1pixY, labelPaint);
-		canvas.drawRoundRect(rectF, 5, 5, borderPaint);
+		
+		canvas.drawText(this.secondaryText, label1pixX, label1pixY + this.getHeight()/2, labelPaint);
+		//canvas.drawRoundRect(rectF, 5, 5, borderPaint);
 	}
 	
 
@@ -107,7 +129,7 @@ public class TooltipWidget {
 	}
 
 	public void setWidth(float width) {
-		this.width = width;
+		//this.width = width;
 	}
 
 	public float getHeight() {
@@ -115,7 +137,7 @@ public class TooltipWidget {
 	}
 
 	public void setHeight(float height) {
-		this.height = height;
+		//this.height = height;
 	}
 
 	public void setBorderColor(int color) {
@@ -136,6 +158,11 @@ public class TooltipWidget {
 				
 	public void setTextSize(float textSize) {
 		this.labelPaint.setTextSize(textSize);
+	}
+
+	public void setDrawable(Drawable drawable) {
+		background = drawable;
+		
 	}
 	
 }

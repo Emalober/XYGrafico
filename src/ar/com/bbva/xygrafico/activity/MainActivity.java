@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 				
 		setContentView(R.layout.activity_main);
 		
+		tooltip = (Tooltip)findViewById(R.id.tooltip);
 		grafico = (XYPlot)findViewById(R.id.xygraph);
 		
 		grafico.getXyGraphWidget().setCountRangeLines(6);

@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
+import android.graphics.drawable.Drawable;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.support.v4.view.GestureDetectorCompat;
@@ -56,6 +57,8 @@ public class XYPlot extends View implements OnTouchListener {
 	
 	/** Touch handler  */
 	private TouchHandler touchHandler;
+	
+	private Drawable tooltip;
 
 	/** List of pair ranges and domain values */
 	private XYSerie<String,Number> xySerie;
@@ -112,7 +115,7 @@ public class XYPlot extends View implements OnTouchListener {
 			   xyGraphWidget.getXyLinePaint().setStrokeWidth(a.getFloat(R.styleable.XYPlot_lineWidth, 1));
 			   xyGraphWidget.setXyLineFillEnabled(a.getBoolean(R.styleable.XYPlot_lineFillEnabled, false));
 			   
-			   
+			   xyGraphWidget.setTooltip(a.getDrawable(R.styleable.XYPlot_tooltip));
 		   } finally {
 		       a.recycle();
 		   }

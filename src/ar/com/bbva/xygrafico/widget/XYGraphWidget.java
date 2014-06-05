@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
@@ -111,6 +112,7 @@ public class XYGraphWidget {
 	
 	
 	public XYGraphWidget() {
+		tooltipRect = new TooltipWidget("$ 12.142,35", "18/05/14", null);
 		init();
 	}
 	
@@ -173,7 +175,7 @@ public class XYGraphWidget {
 		xyLineFillPaint.setAlpha(210);
 		xyLineFillPaint.setShader(new LinearGradient(0, 0, 0, 300, Color.rgb(0, 158, 229) , Color.WHITE, Shader.TileMode.CLAMP));
 
-		tooltipRect = new TooltipWidget("Valor $", "18/05/14");
+		//tooltipRect = new TooltipWidget("Valor $", "18/05/14");
 		tooltipRect.setBackgroundColor(Color.WHITE);
 		tooltipRect.setBorderColor(Color.GRAY);
 		tooltipRect.setHeight(40);
@@ -651,6 +653,10 @@ public class XYGraphWidget {
 
 	public void setXyLineFillEnabled(boolean xyLineFillEnabled) {
 		this.xyLineFillEnabled = xyLineFillEnabled;
+	}
+
+	public void setTooltip(Drawable drawable) {
+		tooltipRect.setDrawable(drawable);
 	}	
 	
 }

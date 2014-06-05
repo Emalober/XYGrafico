@@ -93,9 +93,9 @@ public class Tooltip extends LinearLayout {
         int height = bottom - top;
         int width = right - left;
         
-        arrowUp.setBounds(this.mTmpContainerRect.left, 
+        arrowUp.setBounds((width - arrowUp.getIntrinsicWidth())/2, 
         		0, 
-        		arrowUp.getIntrinsicWidth() + this.mTmpContainerRect.left, 
+        		arrowUp.getIntrinsicWidth() + (width - arrowUp.getIntrinsicWidth())/2, 
         		arrowUp.getIntrinsicHeight());
     
         contour.setBounds(0, arrowUp.getIntrinsicHeight() - arrowUp.getIntrinsicHeight()/3, 
@@ -107,7 +107,7 @@ public class Tooltip extends LinearLayout {
         int rightPos = right - left - this.mTmpContainerRect.right;
 
         // These are the top and bottom edges in which we are performing layout.
-        int parentTop = getPaddingTop() + arrowUp.getIntrinsicHeight() + this.mTmpContainerRect.top;
+        int parentTop = getPaddingTop() + arrowUp.getIntrinsicHeight();// + this.mTmpContainerRect.top;
         int parentBottom = bottom - this.mTmpContainerRect.bottom;
         
         int useHeight = 0;
@@ -136,5 +136,9 @@ public class Tooltip extends LinearLayout {
     	contour.draw(canvas);
     	super.dispatchDraw(canvas);
     	arrowUp.draw(canvas);
+    }
+    
+    public void setPosition() {
+    	
     }
 }

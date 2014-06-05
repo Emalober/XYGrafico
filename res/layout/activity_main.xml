@@ -5,18 +5,18 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-  		<TextView 
-	android:id="@+id/txt_Null"
-	android:layout_width="wrap_content" 
-	android:layout_height="wrap_content" 
-	android:gravity="center_vertical"
-	android:text="XY Grafico"
-	android:textColor="#01a"/>
+	  <TextView 
+		android:id="@+id/txt_Null"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:gravity="center_vertical"
+		android:text="XY Grafico"
+		android:textColor="#01a"/>
     		
     <ar.com.bbva.xygrafico.widget.Tooltip 
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res/ar.com.bbva.xygrafico.widget"
-        android:orientation="vertical"
+        android:id="@+id/tooltip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         custom:contour="@drawable/popup"
@@ -54,6 +54,8 @@
     	custom:labelRangeBackgroundColor="#6d6e71"
     	custom:labelRangeTextAlign="right"
     	custom:labelRangeSize="10sp"
+    	
+    	custom:tooltip="@drawable/tooltip"
     	
     	custom:labelDomainColor="#6c6d71"
     	custom:labelDomainHeight="20dp"
