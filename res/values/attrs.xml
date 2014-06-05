@@ -41,7 +41,12 @@
         <attr name="labelDomainSize" format="dimension"/>
         <attr name="labelDomainWidth" format="dimension"/>
         
-        <attr name="tooltip" 	format="reference"/>
+        <!-- Tooltip attributes -->
+        <attr name="tooltipBackground" 			format="reference"/>
+        <attr name="tooltipLabelPrimaryColor"	format="reference|color"/>
+        <attr name="tooltipLabelPrimarySize"	format="dimension"/>
+        <attr name="tooltipLabelSecondColor"	format="reference|color"/>
+        <attr name="tooltipLabelSecondSize"		format="dimension"/>
                 
         <!-- Grid attributes  -->
         <attr name="lineRangeColor" format="reference|color"/>

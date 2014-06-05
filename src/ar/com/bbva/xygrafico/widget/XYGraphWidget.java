@@ -175,12 +175,6 @@ public class XYGraphWidget {
 		xyLineFillPaint.setAlpha(210);
 		xyLineFillPaint.setShader(new LinearGradient(0, 0, 0, 300, Color.rgb(0, 158, 229) , Color.WHITE, Shader.TileMode.CLAMP));
 
-		//tooltipRect = new TooltipWidget("Valor $", "18/05/14");
-		tooltipRect.setBackgroundColor(Color.WHITE);
-		tooltipRect.setBorderColor(Color.GRAY);
-		tooltipRect.setHeight(40);
-		tooltipRect.setWidth(60);
-
 		xyLinePath = new Path();
 		pointsPix = new ArrayList<PointF>();
 
@@ -654,9 +648,8 @@ public class XYGraphWidget {
 	public void setXyLineFillEnabled(boolean xyLineFillEnabled) {
 		this.xyLineFillEnabled = xyLineFillEnabled;
 	}
-
-	public void setTooltip(Drawable drawable) {
-		tooltipRect.setDrawable(drawable);
-	}	
 	
+	public TooltipWidget getTooltip() {
+		return tooltipRect;
+	}
 }

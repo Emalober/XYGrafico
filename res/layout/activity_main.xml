@@ -55,7 +55,11 @@
     	custom:labelRangeTextAlign="right"
     	custom:labelRangeSize="10sp"
     	
-    	custom:tooltip="@drawable/tooltip"
+    	custom:tooltipBackground="@drawable/tooltip"
+    	custom:tooltipLabelPrimaryColor="#029fe5"
+    	custom:tooltipLabelPrimarySize="14sp"
+    	custom:tooltipLabelSecondColor="#6c6d71"
+    	custom:tooltipLabelSecondSize="10sp"
     	
     	custom:labelDomainColor="#6c6d71"
     	custom:labelDomainHeight="20dp"

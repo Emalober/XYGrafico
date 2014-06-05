@@ -115,7 +115,11 @@ public class XYPlot extends View implements OnTouchListener {
 			   xyGraphWidget.getXyLinePaint().setStrokeWidth(a.getFloat(R.styleable.XYPlot_lineWidth, 1));
 			   xyGraphWidget.setXyLineFillEnabled(a.getBoolean(R.styleable.XYPlot_lineFillEnabled, false));
 			   
-			   xyGraphWidget.setTooltip(a.getDrawable(R.styleable.XYPlot_tooltip));
+			   xyGraphWidget.getTooltip().setDrawable(a.getDrawable(R.styleable.XYPlot_tooltipBackground));
+			   xyGraphWidget.getTooltip().setStylePrimaryText(a.getColor(R.styleable.XYPlot_tooltipLabelPrimaryColor, Color.BLACK),
+					   							a.getDimension(R.styleable.XYPlot_tooltipLabelPrimarySize,14));
+			   xyGraphWidget.getTooltip().setStyleSecondText(a.getColor(R.styleable.XYPlot_tooltipLabelSecondColor, Color.BLACK),
+					   							a.getDimension(R.styleable.XYPlot_tooltipLabelSecondSize,10));
 		   } finally {
 		       a.recycle();
 		   }
