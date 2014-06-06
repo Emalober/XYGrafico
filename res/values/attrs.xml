@@ -61,9 +61,11 @@
         <!-- XYLine attributes  -->
         <attr name="pointBorderWidth" format="float"/>
         <attr name="pointBorderColor" format="reference|color"/>
+        <attr name="pointBorderColorSelected" format="reference|color"/>
         <attr name="pointRadio" format="float"/>
         <attr name="pointWidth" format="float"/>
         <attr name="pointColor" format="reference|color"/>
+        <attr name="pointColorSelected" format="reference|color"/>
         <attr name="lineWidth" format="float"/>
         <attr name="lineColor" format="reference|color"/>
         <attr name="lineFillEnabled" format="boolean" />

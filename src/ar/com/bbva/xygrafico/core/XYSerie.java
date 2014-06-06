@@ -23,4 +23,7 @@ public class XYSerie<X, Y> implements Iterable<Pair<X,Y>>{
 		return xySerie.size();
 	}
 
+	public Pair get(int index) {
+		return xySerie.get(index);
+	}
 }

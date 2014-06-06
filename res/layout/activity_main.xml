@@ -63,7 +63,7 @@
     	
     	custom:labelDomainColor="#6c6d71"
     	custom:labelDomainHeight="20dp"
-    	custom:labelDomainWidth="35dp"
+    	custom:labelDomainWidth="42dp"
     	custom:labelDomainBackgroundColor="#ffffff"
     	custom:labelDomainBorderColor="#cccccc"
     	custom:labelDomainTextAlign="center"
@@ -76,9 +76,11 @@
     	
     	custom:pointBorderWidth="2"
     	custom:pointBorderColor="#029fe5"
+    	custom:pointBorderColorSelected="#6d6e71"
     	custom:pointRadio="7"
     	custom:pointWidth="2"
     	custom:pointColor="#ffffff"
+    	custom:pointColorSelected="#029fe5"
     	custom:lineWidth="3"
     	custom:lineColor="#029fe5"
     	custom:lineFillEnabled="true"

@@ -16,6 +16,8 @@ public class TooltipWidget {
 	private Paint labelPaint2 = new Paint();
 	private String primaryText;
 	private String secondaryText;
+
+	private boolean hidden = true;
 	
 	private float paddingTop;
 	private float paddingRight;
@@ -90,6 +92,11 @@ public class TooltipWidget {
 	 */
 	public void draw(Canvas canvas, float x, float y, int offsetRadius) {
 		
+		if(hidden)
+			return;
+		
+		background.getPadding(rectBackgroundPadding);
+		
 		float pixY =  y - this.getHeight() - offsetRadius - rectBackgroundPadding.bottom;
 		float pixX =  x;
 
@@ -103,21 +110,19 @@ public class TooltipWidget {
 		float label1pixY =  pixY;
 		float label1pixX =  pixX - this.getWidth() /2;
 		
-		background.getPadding(rectBackgroundPadding);
-		
 		background.setBounds((int)(pixX - this.getWidth() /2) - rectBackgroundPadding.left, 
 				(int)pixY - rectBackgroundPadding.top,
 				(int)(pixX + this.getWidth()/2) + rectBackgroundPadding.right, 
 				(int)(pixY + this.getHeight()) + rectBackgroundPadding.bottom);
 
 		background.draw(canvas);
-		
+
 		canvas.drawText(this.primaryText, label1pixX, label1pixY - bounds1.top, labelPaint1);
 		label1pixY += bounds1.bottom - bounds1.top;
 		canvas.drawText(this.secondaryText, label1pixX, label1pixY - bounds2.top, labelPaint2);
 
 	}
-	
+
 
 	private void applyAlign(float x, float y, RectF rectF) {
 		float amountX = 0;
@@ -173,6 +178,20 @@ public class TooltipWidget {
 	public void setStyleSecondText(int color, float size) {
 		labelPaint2.setTextSize(size);
 		labelPaint2.setColor(color);
+		measure();
+	}
+	
+	public void show() {
+		hidden = false;
+	}
+	
+	public void hide() {
+		hidden = false;
+	}
+	public void setTexts(String text1, String text2) {
+		primaryText = text1;
+		secondaryText = text2;
+		
 		measure();
 	}
 }

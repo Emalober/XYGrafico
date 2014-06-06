@@ -29,14 +29,30 @@ public class MainActivity extends Activity {
 		
 		XYSerie<String, Number> xySerie = new XYSerie<String, Number>();
 
-		xySerie.add("08/02/14", 0);
-		xySerie.add("07/02/14", 300);
-		xySerie.add("06/02/14", 50);
-		xySerie.add("05/02/14", 200);
-		xySerie.add("04/02/14", 60);
-		xySerie.add("03/02/14", 70);
-		xySerie.add("02/02/14", 400);
-		xySerie.add("01/02/14", 100);
+		xySerie.add("05/05/2014", 6070.60);
+		xySerie.add("06/05/2014", 2150.25);
+		xySerie.add("07/05/2014", 2154.24);
+		xySerie.add("08/05/2014", 1654.24);
+		xySerie.add("09/05/2014", 1724.96);
+		xySerie.add("12/05/2014", 1034.96);
+		xySerie.add("14/05/2014", 807.72 );
+		xySerie.add("15/05/2014", 3269.79);
+		xySerie.add("16/05/2014", 2569.79);
+		xySerie.add("19/05/2014", 1657.87);
+		xySerie.add("20/05/2014", 1576.01);
+		xySerie.add("21/05/2014", 1588.28);
+		xySerie.add("23/05/2014", 1331.28);
+		xySerie.add("26/05/2014", 104.20 );
+		xySerie.add("27/05/2014", 89.21  );
+		xySerie.add("28/05/2014", 91.45  );
+		xySerie.add("30/05/2014", 11754.45);
+		xySerie.add("31/05/2014", 6364.45);
+		xySerie.add("02/06/2014", 6364.96);
+		xySerie.add("02/06/2014", 6259.62);
+		xySerie.add("04/06/2014", 5829.60);
+		xySerie.add("05/06/2014", 4529.65);
+
+
 	
 		grafico.addSerie(xySerie);
 		

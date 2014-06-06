@@ -107,10 +107,16 @@ public class XYPlot extends View implements OnTouchListener {
 			   xyGraphWidget.getRangeLineTickPaint().setColor(a.getColor(R.styleable.XYPlot_lineRangeColor, Color.WHITE));
 			   
 			   xyGraphWidget.getXyPointBorderPaint().setColor(a.getColor(R.styleable.XYPlot_pointBorderColor, Color.TRANSPARENT));
+			   xyGraphWidget.getXyPointBorderPaintSelected().setColor(a.getColor(R.styleable.XYPlot_pointBorderColorSelected, Color.TRANSPARENT));
 			   xyGraphWidget.getXyPointBorderPaint().setStrokeWidth(a.getFloat(R.styleable.XYPlot_pointBorderWidth, 1));
+			   xyGraphWidget.getXyPointBorderPaintSelected().setStrokeWidth(a.getFloat(R.styleable.XYPlot_pointBorderWidth, 1));
+			   
 			   xyGraphWidget.setXyPointRadio(a.getFloat(R.styleable.XYPlot_pointRadio, 1));
 			   xyGraphWidget.getXyPointPaint().setColor(a.getColor(R.styleable.XYPlot_pointColor, Color.BLACK));
+			   xyGraphWidget.getXyPointPaintSelected().setColor(a.getColor(R.styleable.XYPlot_pointColorSelected, Color.BLACK));
 			   xyGraphWidget.getXyPointPaint().setStrokeWidth(a.getFloat(R.styleable.XYPlot_pointWidth, 1));
+			   xyGraphWidget.getXyPointPaintSelected().setStrokeWidth(a.getFloat(R.styleable.XYPlot_pointWidth, 1));
+				  
 			   xyGraphWidget.getXyLinePaint().setColor(a.getColor(R.styleable.XYPlot_lineColor, Color.BLACK));
 			   xyGraphWidget.getXyLinePaint().setStrokeWidth(a.getFloat(R.styleable.XYPlot_lineWidth, 1));
 			   xyGraphWidget.setXyLineFillEnabled(a.getBoolean(R.styleable.XYPlot_lineFillEnabled, false));

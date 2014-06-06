@@ -64,9 +64,11 @@ public class XYGraphWidget {
 	
 	/**Paint to fill the point serie xy lines */
 	private Paint xyPointPaint;
+	private Paint xyPointPaintSelected;
 	
 	/**Paint border to point serie xy lines */
 	private Paint xyPointBorderPaint;
+	private Paint xyPointBorderPaintSelected;
 	
 	private float xyPointRadio;
 	
@@ -108,7 +110,7 @@ public class XYGraphWidget {
 	/** It has the list of point x y to draw in the view */
 	private List<PointF> pointsPix = new LinkedList<PointF>();
 	
-	private int indexPointSelected = 0;
+	private int indexPointSelected = -1;
 	
 	
 	public XYGraphWidget() {
@@ -166,6 +168,14 @@ public class XYGraphWidget {
 		xyPointBorderPaint = new Paint();
 		xyPointBorderPaint.setAntiAlias(true);
 		xyPointBorderPaint.setStyle(Style.STROKE);
+		
+		xyPointPaintSelected = new Paint();
+		xyPointPaintSelected.setAntiAlias(true);
+		xyPointPaintSelected.setStyle(Style.FILL);
+		
+		xyPointBorderPaintSelected = new Paint();
+		xyPointBorderPaintSelected.setAntiAlias(true);
+		xyPointBorderPaintSelected.setStyle(Style.STROKE);
 		        
 		xyLinePaint = new Paint();
 		xyLinePaint.setAntiAlias(true);
@@ -196,12 +206,8 @@ public class XYGraphWidget {
 			divY = ((divY/mult)+1)*mult;
 		}
 
-		int maxCota = 0;
-		maxCota = (int) (((maxValueY / mult) + 1) * mult);
-
-		if((maxCota - divY/2) >= maxValueY) maxCota = maxCota - divY/2;
-		
-		int minCota = maxCota - (countDivision) * divY;
+		int minCota = (int)(minValueY / mult) * mult;
+		int maxCota = (countDivision) * divY + minCota;
 
 		minValueY = Double.valueOf(minCota).doubleValue();
 		maxValueY = Double.valueOf(maxCota).doubleValue();
@@ -275,8 +281,8 @@ public class XYGraphWidget {
 			
 			drawMesh(canvas);
 			drawXYLine(canvas);
+			drawTooltip(canvas);		
 			drawValueLabels(canvas);
-			drawTooltip(canvas);
 			drawDomainLabels(canvas);
 			
 		} finally {
@@ -314,7 +320,7 @@ public class XYGraphWidget {
 		
 		int lineRangeNumber = 1;
 		for (Number rangeValue : rangeValueTicks) {
-			labelRangeWidget.setText(rangeValue.toString());
+			labelRangeWidget.setText(rangeValue.intValue()+"");
 			labelRangeWidget.draw(canvas, domainStepPix, (lineRangeNumber*rangeStepPix));
 			lineRangeNumber++;
 		}
@@ -377,10 +383,16 @@ public class XYGraphWidget {
 		/** Draw xy line */
 		canvas.drawPath(outlinePath, xyLinePaint);
 		
+		PointF pointSelected = (indexPointSelected >= 0 ? pointsPix.get(indexPointSelected) : null);
 		/** Draw xy Point */ 
 		for (PointF pointF : pointsPix) {
-			canvas.drawCircle(pointF.x, pointF.y, xyPointRadio, xyPointPaint);
-			canvas.drawCircle(pointF.x, pointF.y, xyPointRadio, xyPointBorderPaint);
+			if(pointF == pointSelected) {
+				canvas.drawCircle(pointF.x, pointF.y, xyPointRadio, xyPointBorderPaintSelected);
+				canvas.drawCircle(pointF.x, pointF.y, xyPointRadio, xyPointPaintSelected);				
+			} else {
+				canvas.drawCircle(pointF.x, pointF.y, xyPointRadio, xyPointPaint);
+				canvas.drawCircle(pointF.x, pointF.y, xyPointRadio, xyPointBorderPaint);
+			}
 		}
 		
 		xyLinePath.rewind();
@@ -419,7 +431,9 @@ public class XYGraphWidget {
 	 * @param canvas
 	 */
 	private void drawTooltip(Canvas canvas) {
-		 
+		
+		if(indexPointSelected < 0) return;
+		
 		this.tooltipRect.draw(canvas, pointsPix.get(indexPointSelected).x, 
 									  pointsPix.get(indexPointSelected).y, 10);
 	}
@@ -478,7 +492,7 @@ public class XYGraphWidget {
 			startX  = this.getStartX() - lastXScrolling;
 			this.setStartX(startX);
 		}
-		
+		tooltipRect.hide();
 	}
 	
 	
@@ -509,6 +523,11 @@ public class XYGraphWidget {
 									(double)(y - pointPixel.y));
 			if (dist < 2*xyPointRadio) {
 				indexPointSelected = pointsPix.indexOf(pointPixel);
+				
+				Pair<String, Number> xyLinePoint = xySerie.get(indexPointSelected);
+				tooltipRect.setTexts("$ "+xyLinePoint.second.toString(), 
+						xyLinePoint.first);
+				tooltipRect.show();
 			}
 		}
 	}
@@ -573,12 +592,20 @@ public class XYGraphWidget {
 		return xyPointPaint;
 	}
 
+	public Paint getXyPointPaintSelected() {
+		return xyPointPaintSelected;
+	}
+	
 	public void setXyPointPaint(Paint xyPointPaint) {
 		this.xyPointPaint = xyPointPaint;
 	}
 
 	public Paint getXyPointBorderPaint() {
 		return xyPointBorderPaint;
+	}
+	
+	public Paint getXyPointBorderPaintSelected() {
+		return xyPointBorderPaintSelected;
 	}
 
 	public void setXyPointBorderPaint(Paint xyPointBorderPaint) {
