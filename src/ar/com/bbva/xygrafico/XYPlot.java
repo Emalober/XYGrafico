@@ -92,6 +92,7 @@ public class XYPlot extends View implements OnTouchListener {
 			   xyGraphWidget.getLabelRangeWidget().setBorderColor(a.getColor(R.styleable.XYPlot_labelRangeBorderColor, Color.TRANSPARENT));
 			   xyGraphWidget.getLabelRangeWidget().setTextSize(a.getDimension(R.styleable.XYPlot_labelRangeSize, 9));
 			   xyGraphWidget.getLabelRangeWidget().setTextAlign(convertToAlign(a.getInt(R.styleable.XYPlot_labelRangeTextAlign, TEXT_ALIGN_CENTER)));
+			   xyGraphWidget.setCountRangeLines(a.getInteger(R.styleable.XYPlot_countRangeLines, 6));
 			   
 			   xyGraphWidget.getLabelDomainWidget().setColor(a.getColor(R.styleable.XYPlot_labelDomainColor, Color.BLACK));
 			   xyGraphWidget.getLabelDomainWidget().setHeight(a.getDimension(R.styleable.XYPlot_labelDomainHeight, 50));
@@ -100,6 +101,7 @@ public class XYPlot extends View implements OnTouchListener {
 			   xyGraphWidget.getLabelDomainWidget().setBorderColor(a.getColor(R.styleable.XYPlot_labelDomainBorderColor, Color.TRANSPARENT));
 			   xyGraphWidget.getLabelDomainWidget().setTextSize(a.getDimension(R.styleable.XYPlot_labelDomainSize, 9));
 			   xyGraphWidget.getLabelDomainWidget().setTextAlign(convertToAlign(a.getInt(R.styleable.XYPlot_labelDomainTextAlign, TEXT_ALIGN_CENTER)));
+			   xyGraphWidget.setCountDomainLines(a.getInteger(R.styleable.XYPlot_countDomainLines, 5));
 			   
 			   xyGraphWidget.getGridBackgroundPaint().setColor(a.getColor(R.styleable.XYPlot_gridBackgroundColor, Color.BLACK));
 			   backgroundPaint.setColor(a.getColor(R.styleable.XYPlot_backgroundColor, Color.BLACK));

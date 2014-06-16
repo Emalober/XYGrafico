@@ -27,6 +27,7 @@
         <attr name="labelRangeHeight" format="dimension"/>
         <attr name="labelRangeSize" format="dimension"/>
         <attr name="labelRangeWidth" format="dimension"/>
+        <attr name="countRangeLines" format="integer"/>
         
         <!-- Domain Label attributes  -->
         <attr name="labelDomainTextAlign" format="enum">
@@ -40,6 +41,7 @@
         <attr name="labelDomainHeight" format="dimension"/>
         <attr name="labelDomainSize" format="dimension"/>
         <attr name="labelDomainWidth" format="dimension"/>
+        <attr name="countDomainLines" format="integer"/>
         
         <!-- Tooltip attributes -->
         <attr name="tooltipBackground" 			format="reference"/>
