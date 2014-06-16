@@ -12,79 +12,15 @@
 		android:gravity="center_vertical"
 		android:text="XY Grafico"
 		android:textColor="#01a"/>
-    		
-    <ar.com.bbva.xygrafico.widget.Tooltip 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res/ar.com.bbva.xygrafico.widget"
-        android:id="@+id/tooltip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        custom:contour="@drawable/popup"
-        custom:arrow_up="@drawable/arrow_up"
-        custom:arrow_down="@drawable/arrow_down">
 
-		<TextView 
-			android:id="@+id/txt_mount"
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" 
-			android:gravity="center_vertical"
-			android:text="$ 12.000,12"
-			android:textColor="#01a"/>
-		      
-		<TextView 
-			android:id="@+id/txt_date"
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" 
-			android:gravity="center_vertical"
-			android:text="18/02/14"
-			android:textColor="#000"/>
-
-	</ar.com.bbva.xygrafico.widget.Tooltip>
-		
      <ar.com.bbva.xygrafico.XYPlot 
         android:id="@+id/xygraph"
+        style="@style/xyplot_style"
     	android:layout_width="fill_parent"
     	android:layout_height="200dp"
     	android:layout_marginTop="10dp"
     	android:layout_marginLeft="10dp"
-	    android:layout_marginRight="10dp"
-    	custom:labelRangeColor="#FFFFFF"
-    	custom:labelRangeHeight="20dp"
-    	custom:labelRangeWidth="40dp"
-    	custom:labelRangeBackgroundColor="#6d6e71"
-    	custom:labelRangeTextAlign="right"
-    	custom:labelRangeSize="10sp"
-    	
-    	custom:tooltipBackground="@drawable/tooltip"
-    	custom:tooltipLabelPrimaryColor="#029fe5"
-    	custom:tooltipLabelPrimarySize="14sp"
-    	custom:tooltipLabelSecondColor="#6c6d71"
-    	custom:tooltipLabelSecondSize="10sp"
-    	
-    	custom:labelDomainColor="#6c6d71"
-    	custom:labelDomainHeight="20dp"
-    	custom:labelDomainWidth="42dp"
-    	custom:labelDomainBackgroundColor="#ffffff"
-    	custom:labelDomainBorderColor="#cccccc"
-    	custom:labelDomainTextAlign="center"
-    	custom:labelDomainSize="9sp"
-    	
-    	custom:lineRangeColor="#d9dbdc"
-    	custom:lineDomainColor="#d9dbdc"
-    	custom:gridBackgroundColor="#f2f2f2"
-    	custom:backgroundColor="#f2f2f2"
-    	
-    	custom:pointBorderWidth="2"
-    	custom:pointBorderColor="#029fe5"
-    	custom:pointBorderColorSelected="#6d6e71"
-    	custom:pointRadio="7"
-    	custom:pointWidth="2"
-    	custom:pointColor="#ffffff"
-    	custom:pointColorSelected="#029fe5"
-    	custom:lineWidth="3"
-    	custom:lineColor="#029fe5"
-    	custom:lineFillEnabled="true"
-    	
+	    android:layout_marginRight="10dp"    	
     	/> 
         
 

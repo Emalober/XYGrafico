@@ -182,8 +182,8 @@ public class XYGraphWidget {
 		xyLinePaint.setStyle(Paint.Style.STROKE);
 		
 		xyLineFillPaint = new Paint();
-		xyLineFillPaint.setAlpha(210);
-		xyLineFillPaint.setShader(new LinearGradient(0, 0, 0, 300, Color.rgb(0, 158, 229) , Color.WHITE, Shader.TileMode.CLAMP));
+		//xyLineFillPaint.setAlpha(210);
+		xyLineFillPaint.setShader(new LinearGradient(0, 0, 0, 300, Color.argb(210, 0, 158, 229) , Color.argb(10, 0, 158, 229), Shader.TileMode.CLAMP));
 
 		xyLinePath = new Path();
 		pointsPix = new ArrayList<PointF>();
@@ -319,9 +319,12 @@ public class XYGraphWidget {
 	private void drawValueLabels(Canvas canvas) {
 		
 		int lineRangeNumber = 1;
+		float originY = labelRangeWidget.getHeight() / 4;
+		float origenX = gridRect.left + labelRangeWidget.getWidth();
+		
 		for (Number rangeValue : rangeValueTicks) {
 			labelRangeWidget.setText(rangeValue.intValue()+"");
-			labelRangeWidget.draw(canvas, domainStepPix, (lineRangeNumber*rangeStepPix));
+			labelRangeWidget.draw(canvas, origenX, originY + (lineRangeNumber*rangeStepPix));
 			lineRangeNumber++;
 		}
 
@@ -377,7 +380,10 @@ public class XYGraphWidget {
 			xyLinePath.lineTo(lastPoint.x, gridRect.bottom);
 			xyLinePath.lineTo(firstPoint.x, gridRect.bottom);
 			xyLinePath.close();
-		
+			xyLineFillPaint.setShader(new LinearGradient(0, 0, 0, gridRect.bottom, 
+					Color.argb(210, 0, 158, 229) , Color.argb(0, 0, 158, 229), 
+					Shader.TileMode.CLAMP));
+
 			canvas.drawPath(xyLinePath, xyLineFillPaint);
 		}
 		/** Draw xy line */
@@ -435,7 +441,8 @@ public class XYGraphWidget {
 		if(indexPointSelected < 0) return;
 		
 		this.tooltipRect.draw(canvas, pointsPix.get(indexPointSelected).x, 
-									  pointsPix.get(indexPointSelected).y, 10);
+									  pointsPix.get(indexPointSelected).y, 
+									  (int)xyPointRadio);
 	}
 
 	

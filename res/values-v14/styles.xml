@@ -9,4 +9,42 @@
         <!-- API 14 theme customizations can go here. -->
     </style>
 
+	<style name="xyplot_style">
+    	<item name="labelRangeColor">#FFFFFF</item>
+    	<item name="labelRangeHeight">20dp</item>
+    	<item name="labelRangeWidth">40dp</item>
+    	<item name="labelRangeBackgroundColor">#6d6e71</item>
+    	<item name="labelRangeTextAlign">right</item>
+    	<item name="labelRangeSize">10sp</item>
+
+    	<item name="tooltipBackground">@drawable/tooltip</item>
+    	<item name="tooltipLabelPrimaryColor">#029fe5</item>
+    	<item name="tooltipLabelPrimarySize">15sp</item>
+    	<item name="tooltipLabelSecondColor">#6c6d71</item>
+    	<item name="tooltipLabelSecondSize">10sp</item>
+
+    	<item name="labelDomainColor">#6c6d71</item>
+    	<item name="labelDomainHeight">20dp</item>
+    	<item name="labelDomainWidth">43dp</item>
+    	<item name="labelDomainBackgroundColor">#ffffff</item>
+    	<item name="labelDomainBorderColor">#cccccc</item>
+    	<item name="labelDomainTextAlign">center</item>
+    	<item name="labelDomainSize">10sp</item>
+
+    	<item name="lineRangeColor">#d9dbdc</item>
+    	<item name="lineDomainColor">#d9dbdc</item>
+    	<item name="gridBackgroundColor">#f2f2f2</item>
+    	<item name="backgroundColor">#f2f2f2</item>
+
+    	<item name="pointBorderWidth">4</item>
+    	<item name="pointBorderColor">#029fe5</item>
+    	<item name="pointBorderColorSelected">#ffffff</item>
+    	<item name="pointRadio">12</item>
+    	<item name="pointWidth">4</item>
+    	<item name="pointColor">#ffffff</item>
+    	<item name="pointColorSelected">#029fe5</item>
+    	<item name="lineWidth">4</item>
+    	<item name="lineColor">#029fe5</item>
+    	<item name="lineFillEnabled">true</item>
+	</style>
 </resources>
