@@ -387,6 +387,8 @@ public class XYGraphWidget {
 			canvas.drawPath(xyLinePath, xyLineFillPaint);
 		}
 		/** Draw xy line */
+		//outlinePath.close();
+		outlinePath.setLastPoint(lastPoint.x, lastPoint.y);
 		canvas.drawPath(outlinePath, xyLinePaint);
 		
 		PointF pointSelected = (indexPointSelected >= 0 ? pointsPix.get(indexPointSelected) : null);

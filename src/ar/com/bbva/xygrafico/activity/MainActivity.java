@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 		xySerie.add("07/05/14", 2154.24);
 		xySerie.add("08/05/14", 1654.24);
 		xySerie.add("09/05/14", 1724.96);
-		xySerie.add("12/05/14", 1034.96);
+/*		xySerie.add("12/05/14", 1034.96);
 		xySerie.add("14/05/14", 807.72 );
 		xySerie.add("15/05/14", 3269.79);
 		xySerie.add("16/05/14", 2569.79);
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 		xySerie.add("02/06/14", 6364.96);
 		xySerie.add("02/06/14", 6259.62);
 		xySerie.add("04/06/14", 5829.60);
-		xySerie.add("05/06/14", 4529.65);
+		xySerie.add("05/06/14", 4529.65);*/
 
 
 	
